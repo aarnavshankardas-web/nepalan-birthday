@@ -75,6 +75,21 @@ document.getElementById("cutCake").addEventListener("click",()=>{
 });
 document.getElementById("cakeNext").addEventListener("click",()=>showScreen("letter"));
 document.getElementById("letterNext").addEventListener("click",()=>showScreen("final"));
+document.getElementById("envelopeLaunch").addEventListener("click",()=>showScreen("envelopeEnd"));
+
+const envelope = document.getElementById("letterEnvelope");
+const openEnvelopeBtn = document.getElementById("openEnvelopeBtn");
+function openFinalEnvelope(){
+  envelope.classList.add("opened");
+  openEnvelopeBtn.textContent = "Your message is open 💗";
+  openEnvelopeBtn.disabled = true;
+  openEnvelopeBtn.style.opacity = ".7";
+}
+openEnvelopeBtn.addEventListener("click",openFinalEnvelope);
+document.getElementById("envSeal").addEventListener("click",openFinalEnvelope);
+document.getElementById("envSeal").addEventListener("keydown",(event)=>{
+  if(event.key==="Enter" || event.key===" "){event.preventDefault();openFinalEnvelope();}
+});
 
 function spawnFlowers(){
   const petals=document.getElementById("petals");
